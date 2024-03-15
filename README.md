@@ -136,7 +136,7 @@ pip install -U byzerllm
 conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 cupy=12.1 cuda-version=12.1 -c pytorch -c nvidia -c conda-forge: This installs compatible torch and cupy altogether.
 # 前面安装的已经是xformers=="0.0.23.post1"了
 # pip install xformers=="0.0.23.post1" --index-url https://download.pytorch.org/whl/cu121: 0.0.23.post1 is the only version compatible with torch=2.1.2
-pip install cupy-cuda11x==12.1
+# [貌似上面的conda install pytorch==2.1.2...已经安装过 已经安装过了cupy-12.1.0 ，先执行下面的命令，如果不行再运行这一行 pip install cupy-cuda12x
 python -m cupyx.tools.install_library --library nccl --cuda 12.x
 conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 cupy=12.1 cuda-version=12.1 -c pytorch -c nvidia -c conda-forge
 额外添加的，与cupy有关
