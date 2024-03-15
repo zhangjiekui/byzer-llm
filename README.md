@@ -124,11 +124,23 @@ Recommend Env:
 3. Cuda:   12.1.0 (Optional if you only use SaaS model)
 
 ```bash
+conda create -n byzervllm python=3.10.11 -y: Do NOT use python=3.11 for now since cupy=12.1 not support a slightly newer minor versions of python=3.11 like 3.11.1
 ## Make sure you python version is 3.10.11
 pip install -r requirements.txt
 ## Skip this step if you have no Nvidia GPU
 pip install vllm==0.2.6
 pip install -U byzerllm
+
+
+额外添加的，与cupy有关
+conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 cupy=12.1 cuda-version=12.1 -c pytorch -c nvidia -c conda-forge: This installs compatible torch and cupy altogether.
+# 前面安装的已经是xformers=="0.0.23.post1"了
+# pip install xformers=="0.0.23.post1" --index-url https://download.pytorch.org/whl/cu121: 0.0.23.post1 is the only version compatible with torch=2.1.2
+pip install cupy-cuda11x==12.1
+python -m cupyx.tools.install_library --library nccl --cuda 12.x
+conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 cupy=12.1 cuda-version=12.1 -c pytorch -c nvidia -c conda-forge
+额外添加的，与cupy有关
+
 ray start --head
 ```
 
